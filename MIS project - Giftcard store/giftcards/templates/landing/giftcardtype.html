@@ -1,0 +1,37 @@
+{% extends "landing/base.html" %}
+{% block content %}
+<div class="container">
+
+    <div class="row text-center" style="margin-top: 3%;">
+        <h2>{{giftcardtype.name}}</h2>
+    </div>
+
+    <div class="row justify-content-center">
+        <img src="{{giftcardtype.image.url}}" style="height: 35%;width: 25%;">
+    </div>
+
+    <div class="row text-center" style="margin-top: 3%;">
+    {% if message %}
+        <h4>{{message}}</h4>
+    {% else %}
+        <h4>Price-{{giftcardtype.price}}$</h4>
+    {% endif %}
+    </div>
+
+    {% if request.user.is_authenticated %}
+    <div class="row text-center">
+        {{form.render}}
+    </div>
+    {% else %}
+    <div class="row text-center">
+        <h4>Login to purchase</h4>
+    </div>
+
+    {% endif %}
+    
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "landing/base.html" %}
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row text-center">
+        <h1>Discover</h1>
+    </div>
+    <div class="row text-center">
+        <a type="button" class="btn btn-primary" href="{% url 'giftcardcategories' %}">
+            Display Categories <span class="badge bg-dark">{{number_categories}}</span>
+        </a>
+    </div>
+
+    <div class="row justify-content-center text-center" style="margin-top: 3%;">
+        
+        {% for giftcardtype in giftcardtypes %}
+        <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center justify-content-center">
+        <div class="card" style="width: 18rem;margin-top:2%;">
+            <img src="{{giftcardtype.image.url}}" class="card-img-top" style="width: 100%;
+            height: 33vh;
+            object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">{{giftcardtype.name}}</h5>
+                <p class="card-text">Balance-{{giftcardtype.balance}}</p>
+                <a href="{% url 'giftcardtype' giftcardtype.id %}" class="btn btn-primary">Check availability</a>
+            </div>
+        </div>
+        </div>
+        
+        {% endfor %}
+    
+    </div>
+
+    
+</div>
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "landing/base.html" %}
+{% block content %}
+<h2>My giftcards</h2>
+
+{% if undelivered %}
+<p>{{undelivered}} giftcards left to be delivered</p>
+
+{% endif %}
+
+
+{% for giftcard in mygiftcard %}
+<p>{{ giftcard.type }}----{{ giftcard.code }}</p>
+
+{% endfor %}
+
+{% endblock %}
